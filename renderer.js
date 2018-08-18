@@ -12,3 +12,5 @@ let view = (templateName, values, res) => {
     fileContents = mergeValues(values, fileContents);
     res.write(fileContents);
 }
+
+module.exports.view = view;

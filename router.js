@@ -1,10 +1,11 @@
 const Astroid = require('./astroid');
+const Renderer = require('./renderer');
 
 const  commonHeader = {'Content-Type': 'text/html'};
 const landing  = (req, res) => {
     if(req.url === '/') {
         res.writeHead(200, commonHeader);
-        res.write('Hello there');
+        Renderer.view('index', {}, res);
         res.end();
     }
 }
@@ -21,9 +22,14 @@ const stats = (req, res) => {
                 minDiameter: data.near_earth_objects[randomNum].estimated_diameter.kilometers.estimated_diameter_min,
                 maxDiameter: data.near_earth_objects[randomNum].estimated_diameter.kilometers.estimated_diameter_max
             };
-            console.log(values);
+            Renderer.view('stats', values, res);
+            res.end();
         });
-        res.write('This is stats');
+        stats.on('err', (err) => {
+            res.write(err.message);
+            res.end();
+        });
+    } else {
         res.end();
     }
 }
