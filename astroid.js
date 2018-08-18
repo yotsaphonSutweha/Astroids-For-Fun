@@ -15,7 +15,6 @@ function Astroid() {
         }
         res.on('data', (data) => {
             body += data;
-            astroidEmitter.emit('data', data);
         });
         res.on('end', () => {
             try {
