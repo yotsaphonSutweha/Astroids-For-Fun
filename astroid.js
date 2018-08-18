@@ -7,7 +7,7 @@ function Astroid() {
     const url = "https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=tHbHQMTLhc5Tc22ag9nFuZkFcpbTDKaTrwakdgri";
     EventEmitter.call(this);
     let astroidEmitter = this;
-    let request = https.get(url111, (res) => {
+    let request = https.get(url, (res) => {
         let body = "";
         if(res.statusCode !== 200) {
             request.abort();
