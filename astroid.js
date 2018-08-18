@@ -23,9 +23,9 @@ function Astroid() {
                     astroidEmitter.emit('end', astroids);
                 }
             } catch (err) {
-                astroidEmitter.emit('err', error);
+                astroidEmitter.emit('err', err);
             }
-        }).on('err', (error) => {
+        }).on('err', (err) => {
             astroidEmitter.emit('err', err);
         });
     })
